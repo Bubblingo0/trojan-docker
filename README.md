@@ -1,31 +1,28 @@
-# Trojan Docker
 
-Dockerfile for building a trojan docker image.
+## Config
 
-## Build Trojan Docker Image
+1. Create trojan config `/etc/trojan/config.json`.
 
-1. Clone this repository.
+2. Modify local address to "0.0.0.0".
 
-```bash
-$ git clone https://github.com/trojan-gfw/trojan-docker.git
+```json
+    "local_addr": "0.0.0.0"
 ```
 
-2. Build docker image with `docker build`.
+2. Move cert and key to `/etc/trojan/`.
 
-```bash
-$ docker build -t="trojan" .
+```json
+    "cert": "/etc/trojan/fullchain.pem",
+    "key": "/etc/trojan/privkey.pem"
 ```
 
-## Pull Trojan Docker Image
-
-Alternatively, you can pull the pre-built trojan image from docker hub.
+## Pull
 
 ```bash
-$ docker pull trojangfw/trojan
+$ docker pull bubbling/trojan-docker
 ```
 
-Create trojan container from image.
-
+## Run
 ```bash
-$ docker run -it --name="trojan" trojangfw/trojan
+$ docker run -d --name=trojan --restart always -p 443:443 -v /etc/trojan:/etc/trojan bubbling/trojan-docker
 ```
