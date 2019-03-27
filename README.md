@@ -6,14 +6,14 @@
 2. Modify local address to "0.0.0.0".
 
 ```json
-    "local_addr": "0.0.0.0"
+"local_addr": "0.0.0.0"
 ```
 
-2. Move cert and key to `/etc/trojan/`.
+3. Move cert and key to `/etc/trojan/`.
 
 ```json
-    "cert": "/etc/trojan/fullchain.pem",
-    "key": "/etc/trojan/privkey.pem"
+"cert": "/etc/trojan/fullchain.pem",
+"key": "/etc/trojan/privkey.pem"
 ```
 
 ## Pull
@@ -23,6 +23,7 @@ $ docker pull bubbling/trojan-docker
 ```
 
 ## Run
+
 ```bash
 $ docker run -d --name=trojan --restart always -p 443:443 -v /etc/trojan:/etc/trojan bubbling/trojan-docker
 ```
