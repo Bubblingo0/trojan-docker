@@ -21,6 +21,8 @@ RUN apk add --no-cache --virtual .build-deps \
         boost-program_options \
         mariadb-connector-c
 
+VOLUME /etc/trojan
+
 EXPOSE 443
 
-CMD ["trojan"]
+CMD [ "trojan", "-c", "/etc/trojan/config.json" ]
